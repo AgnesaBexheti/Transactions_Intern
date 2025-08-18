@@ -1,0 +1,22 @@
+.header {
+  position: fixed; inset: 0 0 auto 0; height: var(--appbar-h);
+  display: flex; align-items: center; gap: 12px; z-index: 40;
+  background: #0f172a; color: white; box-shadow: 0 4px 12px rgba(0,0,0,.12);
+  padding: 0 16px;
+}
+.brand { display: flex; align-items: center; gap: 10px; color: #99f6e4; }
+.brandIcon { font-size: 18px; }
+.brandTitle { font-size: 18px; font-weight: 600; margin: 0; color: #5eead4; }
+.subtitle { color: #cbd5e1; font-size: 13px; }
+.headerRight { margin-left: auto; }
+.menuButton { display: inline-block; }
+/* @media (min-width: 768px) { .menuButton { display: none; } } */
+
+.menuButton {
+  display: inline-block;           
+  border: 1.5px solid var(--border);
+  background: white;
+  color: #0f172a;
+  border-radius: 10px;
+  padding: 6px 8px;
+    cursor: pointer; }

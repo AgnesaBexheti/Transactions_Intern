@@ -1,0 +1,10 @@
+.appShell { height: 100vh; width: 100vw; overflow: hidden; }
+
+/* Main content area compensates for fixed header and (on desktop) sidebar */
+.appMain { padding-top: var(--appbar-h); }
+.appScroll { height: calc(100vh - var(--appbar-h)); overflow-y: auto; }
+
+
+@media (min-width: 768px) {
+  .appMain { margin-left: var(--sidebar-w); }
+}
