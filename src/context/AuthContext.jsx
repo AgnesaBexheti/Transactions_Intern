@@ -4,7 +4,7 @@ import { api } from '../lib/api.js';
 const AuthCtx = createContext(null);
 
 export function AuthProvider({ children }) {
-  // Persist a simple boolean; cookie is on the browser and used by the server
+  // cookie is on the browser and used by the server
   const [isAuthed, setIsAuthed] = useState(() => localStorage.getItem('auth:flag') === '1');
 
   async function login({ email, password }) {
@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
 
   async function signup({ email, password }) {
     await api.signup({ email, password });  // creates user; no cookie returned
-    // user must log in after signup (your backend does not auto-login)
+    // user must log in after signup 
   }
 
   async function logout() {

@@ -17,7 +17,7 @@ export default function SignUp() {
     setLoading(true);
     try {
       await signup({ email, password });
-      nav('/login'); // backend doesn't auto-login on signup
+      nav('/login'); 
     } catch (e) {
       setErr(e.message || 'Signup failed');
     } finally {
