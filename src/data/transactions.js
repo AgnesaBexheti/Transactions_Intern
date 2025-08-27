@@ -9,4 +9,6 @@ export const transactions = [
   { id: 8, title: 'Utilities', category: 'Bills', amount: -25, date: '2025-07-18' },
   { id: 9, title: 'Phone Plan', category: 'Bills', amount: -12.99, date: '2025-07-15' },
   { id: 10, title: 'Scorpions Concert Ticket', category: 'Entertainment', amount: -50, date: '2025-07-12' },
+
+
 ];
