@@ -1,4 +1,6 @@
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+  
+
 
 // Generic fetch wrapper that includes cookies and parses JSON safely
 async function request(path, { method = 'GET', body, headers = {}, auth = false } = {}) {
@@ -44,6 +46,8 @@ export const api = {
 
   
   categories: () => request('/categories', { method: 'GET' }),
+  getExpenses: () => request('/expenses', { method: 'GET' }),
 
   
 };
+

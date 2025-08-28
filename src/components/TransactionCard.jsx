@@ -1,6 +1,17 @@
 import styles from './TransactionCard.module.css';
+import { useAuth } from '../context/AuthContext.jsx';
 
-export default function TransactionCard({ title, category, amount, date }) {
+export default function TransactionCard({
+  id,                // handy for callbacks later
+  title,
+  category,
+  amount,
+  date,
+  onEdit,            // optional parent can pass handlers
+  onDelete
+}) {
+  const { isAuthed } = useAuth();          // are we logged in?
+
   const isIncome = amount >= 0;
   const amountStr = `${isIncome ? '+' : '-'}${Math.abs(amount).toFixed(2)}€`;
 
@@ -17,10 +28,13 @@ export default function TransactionCard({ title, category, amount, date }) {
         </div>
       </div>
 
-      <div className={styles.actions}>
-        <button className="btn btn-ghost">✎ Edit</button>
-        <button className="btn btn-ghost">🗑 Delete</button>
-      </div>
+      {/* Show Edit/Delete only for logged-in users */}
+      {isAuthed && (
+        <div className={styles.actions}>
+          <button className="btn btn-ghost" onClick={() => onEdit?.(id)}>✎ Edit</button>
+          <button className="btn btn-ghost" onClick={() => onDelete?.(id)}>🗑 Delete</button>
+        </div>
+      )}
     </article>
   );
 }
