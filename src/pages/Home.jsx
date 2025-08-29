@@ -4,6 +4,7 @@ import { api } from '../lib/api.js';
 import { useAuth } from '../context/AuthContext.jsx';
 import TransactionCard from '../components/TransactionCard.jsx';
 import styles from './Home.module.css';
+console.log('api functions:', Object.keys(api));
 
 
 export default function Home() {
@@ -27,6 +28,19 @@ export default function Home() {
     })();
     return () => { ignore = true; };
   }, []);
+    async function handleDelete(id) {
+    if (!confirm('Delete this transaction?')) return;
+    setErr('');
+    // optimistic update with rollback
+    const backup = items;
+    setItems(items.filter(t => t.id !== id));
+    try {
+      await api.deleteExpense(id);             // DELETE /api/expenses/:id
+    } catch (e) {
+      setItems(backup);                        // rollback on error
+      setErr(e.message || 'Failed to delete');
+    }
+  }
 
   return (
     <section className={styles.page}>
@@ -56,6 +70,7 @@ export default function Home() {
                 amount={Number(t.value)}           // backend uses "value"
                 date={(t.createdAt || '').slice(0, 10)} // show YYYY-MM-DD
                 onEdit={(id) => nav(`/edit/${id}`, { state: { item: t } })}
+                onDelete={handleDelete} 
               />
             ))
           )}
