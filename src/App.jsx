@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import Home from './pages/Home.jsx';
@@ -7,6 +7,8 @@ import { useSidebar } from './hooks/useSidebar.js';
 import styles from './App.module.css';
 import Login from './components/Login.jsx';
 import SignUp from './components/SignUp.jsx';
+import TransactionFormPage from './pages/TransactionFormPage.jsx';
+import ProtectedRoute from './routes/ProtectedRoute.jsx';
 
 export default function App() {
   const { open, toggle, close } = useSidebar(false);
@@ -23,6 +25,7 @@ export default function App() {
       .catch(err => console.error('Ping FAILED:', err));
   }, []);
 
+
   return (
     <div className={styles.appShell}>
       <Header onMenu={toggle} />
@@ -33,7 +36,14 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route element={<ProtectedRoute />}>
+              <Route path="/create" element={<TransactionFormPage isEditing={false} />} />
+              <Route path="/edit/:id" element={<TransactionFormPage isEditing={true} />} />
+            </Route>
+
+          <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+
         </div>
       </main>
     </div>

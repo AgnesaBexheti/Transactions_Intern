@@ -47,7 +47,8 @@ export const api = {
   
   categories: () => request('/categories', { method: 'GET' }),
   getExpenses: () => request('/expenses', { method: 'GET' }),
-
-  
+  getExpense:  (id) => request(`/expense/${id}`, { method: 'GET' }),    
+  createExpense: (p) => request('/expenses', { method: 'POST', body: p }),
+  updateExpense: (id, p) => request(`/expenses/${id}`, { method: 'PUT', body: p }),
 };
 

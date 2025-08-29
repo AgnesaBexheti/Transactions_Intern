@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useNavigate } from 'react-router-dom';
 import { api } from '../lib/api.js';
 import { useAuth } from '../context/AuthContext.jsx';
 import TransactionCard from '../components/TransactionCard.jsx';
 import styles from './Home.module.css';
+
 
 export default function Home() {
   const { isAuthed } = useAuth();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState('');
+  const nav = useNavigate();
 
   useEffect(() => {
     let ignore = false;
@@ -53,6 +55,7 @@ export default function Home() {
                 category={t?.category?.name ?? '—'}
                 amount={Number(t.value)}           // backend uses "value"
                 date={(t.createdAt || '').slice(0, 10)} // show YYYY-MM-DD
+                onEdit={(id) => nav(`/edit/${id}`, { state: { item: t } })}
               />
             ))
           )}
