@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { NavLink,useNavigate } from 'react-router-dom';
-import { api } from '../lib/api.js';
-import { useAuth } from '../context/AuthContext.jsx';
-import TransactionCard from '../components/TransactionCard.jsx';
+import { api } from '../../lib/api.js';
+import { useAuth } from '../../context/AuthContext.jsx';
+import TransactionCard from '../../components/TransactionCard/TransactionCard.jsx';
 import styles from './Home.module.css';
 console.log('api functions:', Object.keys(api));
 

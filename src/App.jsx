@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import Header from './components/Header.jsx';
-import Sidebar from './components/Sidebar.jsx';
-import Home from './pages/Home.jsx';
+import Header from './components/Header/Header.jsx';
+import Sidebar from './components/Sidebar/Sidebar.jsx';
+import Home from './pages/Home/Home.jsx';
 import { useSidebar } from './hooks/useSidebar.js';
 import styles from './App.module.css';
 import Login from './components/Login.jsx';
 import SignUp from './components/SignUp.jsx';
-import TransactionFormPage from './pages/TransactionFormPage.jsx';
+import TransactionFormPage from './pages/TransactionForm/TransactionFormPage.jsx';
 import ProtectedRoute from './routes/ProtectedRoute.jsx';
 
 export default function App() {

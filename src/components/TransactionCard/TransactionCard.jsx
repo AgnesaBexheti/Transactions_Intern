@@ -1,5 +1,5 @@
 import styles from './TransactionCard.module.css';
-import { useAuth } from '../context/AuthContext.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
 
 export default function TransactionCard({
   id,                // handy for callbacks later
@@ -7,7 +7,7 @@ export default function TransactionCard({
   category,
   amount,
   date,
-  onEdit,            // optional parent can pass handlers
+  onEdit,            
   onDelete
 }) {
   const { isAuthed } = useAuth();          // are we logged in?

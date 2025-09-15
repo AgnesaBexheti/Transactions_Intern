@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext.jsx';
+import { useAuth } from '../../context/AuthContext.jsx';
 import styles from './Sidebar.module.css';
 
 export default function Sidebar({ open, onClose }) {
@@ -26,7 +26,7 @@ export default function Sidebar({ open, onClose }) {
             </NavLink>
           </li>
 
-          {/* 👇 Only when logged in */}
+          {/* Only when logged in */}
           {isAuthed && (
             <li>
               <NavLink

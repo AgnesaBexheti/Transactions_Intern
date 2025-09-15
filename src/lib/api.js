@@ -9,7 +9,7 @@ async function request(path, { method = 'GET', body, headers = {} } = {}) {
     credentials: 'include',                // send/receive httpOnly cookie
     headers: { ...headers }
   };
-  if (body !== undefined) {
+  if (body !== undefined) {                                         // Attach JSON body when provided 
     opts.headers['Content-Type'] = 'application/json';
     opts.body = JSON.stringify(body);
   }
@@ -27,7 +27,7 @@ async function request(path, { method = 'GET', body, headers = {} } = {}) {
     throw err;
   }
 
-  if (res.status === 204) return null;      // e.g., logout
+  if (res.status === 204) return null;      // No Content
 
   if (!isJson) throw new Error(`Expected JSON but got ${ct || 'unknown'} from ${url}`);
   return payload;
@@ -50,4 +50,4 @@ export const api = {
   deleteExpense:  (id)      => request(`/expenses/${id}`,        { method: 'DELETE' }) 
 };
 
-export default api; // optional
+export default api; 

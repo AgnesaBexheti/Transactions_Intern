@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { api } from '../lib/api.js';
-import { useAuth } from '../context/AuthContext.jsx';
+import { api } from '../../lib/api.js';
+import { useAuth } from '../../context/AuthContext.jsx';
+import styles from './TransactionFormPage.module.css';
 
 const CREATE_DEFAULTS = { title: '', value: '', categoryId: 1 };
 
@@ -119,7 +120,7 @@ export default function TransactionFormPage({ isEditing = false }) {
   }
 
   return (
-    <section style={{ padding: 24, maxWidth: 520 }}>
+    <section className={styles.container}> 
       <h2 style={{ marginBottom: 16 }}>{pageTitle}</h2>
 
       <form onSubmit={onSubmit} style={{ display: 'grid', gap: 12 }}>
