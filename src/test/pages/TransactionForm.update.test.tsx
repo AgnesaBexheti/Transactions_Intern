@@ -3,21 +3,21 @@ import { describe, test, expect, vi } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-// ---- auth ON (simple one-liner)
+// auth ON (simple one-liner)
 vi.mock('../../context/AuthContext.jsx', () => ({
   useAuth: () => ({ isAuthed: true }),
 }));
 
-// ---- HOISTED navigate spy (so it's defined before the mock factory runs)
+// HOISTED navigate spy (so it's defined before the mock factory runs)
 const { navigateMock } = vi.hoisted(() => ({ navigateMock: vi.fn() }));
 
-// ---- mock react-router-dom: just replace useNavigate with our spy
+// mock react-router-dom: just replace useNavigate with our spy
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual<any>('react-router-dom');
   return { ...actual, useNavigate: () => navigateMock };
 });
 
-// ---- mock API used by the page
+// mock API used by the page
 vi.mock('../../lib/api.js', () => ({
   api: {
     categories: vi.fn().mockResolvedValue([

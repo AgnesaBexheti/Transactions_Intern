@@ -8,9 +8,8 @@ vi.mock('../../context/AuthContext.jsx', () => ({
   useAuth: () => ({ isAuthed: true, logout: () => {} }),
 }));
 
-// ⚠️ Adjust if your Sidebar path is different
-// import Sidebar from '../../components/Sidebar.jsx';
-import Sidebar from '../../components/Sidebar/Sidebar.jsx';
+
+import Sidebar from '../../components/Sidebar/Sidebar.js';
 
 describe('Sidebar (logged in)', () => {
   test('shows Create + Logout and hides Login / Signup', () => {

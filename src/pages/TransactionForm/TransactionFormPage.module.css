@@ -24,8 +24,7 @@
   --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
 }
 
-/* Optional wrapper for the <section> if you want to add it later:
-   <section className={styles.container}> ... */
+
 .container {
   margin: 0 auto;
   max-width: 560px;

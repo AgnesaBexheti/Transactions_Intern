@@ -7,7 +7,7 @@ vi.mock('../../context/AuthContext.jsx', () => ({
   useAuth: () => ({ isAuthed: true }),
 }));
 
-import TransactionCard from '../../components/TransactionCard/TransactionCard.jsx';
+import TransactionCard from '../../components/TransactionCard/TransactionCard.js';
 
 const SAMPLE = {
   id: 't2',

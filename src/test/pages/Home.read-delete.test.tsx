@@ -21,7 +21,7 @@ vi.mock('../../lib/api.js', () => ({
 }));
 import { api } from '../../lib/api.js';
 
-import Home from '../../pages/Home/Home.jsx';
+import Home from '../../pages/Home/Home.js';
 
 describe('Home page (read + delete)', () => {
   beforeEach(() => {

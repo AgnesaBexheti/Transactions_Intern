@@ -1,7 +1,7 @@
 import { describe, test, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Header from '../../components/Header/Header.jsx';
+import Header from '../../components/Header/Header.js';
 
 
 describe('Header', () => {
